@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import { v4 as uuidv4 } from 'uuid';
+import './App.css';
 import AppHeader from './components/AppHeader';
 import NewTaskForm from './components/NewTaskForm';
 import TaskList from './components/TaskList';
@@ -20,6 +21,7 @@ const App = () => {
       isDone: false,
       isImportant: false,
       id: uuidv4(),
+      createdAt: new Date(),
     };
     setTodos([...todos, newTask]);
   };

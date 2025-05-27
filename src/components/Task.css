@@ -13,6 +13,8 @@
   cursor: pointer;
   user-select: none;
   width: 100%;
+  white-space: normal;
+  overflow-wrap: break-word;
 }
 
 .todo-list-item.done .todo-list-item-label {

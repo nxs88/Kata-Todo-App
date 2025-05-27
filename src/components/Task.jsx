@@ -1,3 +1,4 @@
+import { formatDistanceToNow } from 'date-fns';
 import './Task.css';
 
 function Task({
@@ -75,6 +76,10 @@ function Task({
       >
         <i className="fa fa-edit" />
       </button>
+      <div style={{ fontSize: '10px', color: 'lightgray' }}>
+        Created {formatDistanceToNow(todo.createdAt, { includeSeconds: true })}{' '}
+        ago
+      </div>
     </span>
   );
 }
