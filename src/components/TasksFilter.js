@@ -1,4 +1,4 @@
-function TasksFilter({ tasksFilter }) {
+function TasksFilter({ tasksFilter, clearAllTasks }) {
   return (
     <div className="btn-group">
       <button
@@ -28,7 +28,11 @@ function TasksFilter({ tasksFilter }) {
       >
         Done
       </button>
-      <button type="button" className="btn btn-outline-secondary">
+      <button
+        type="button"
+        className="btn btn-outline-secondary"
+        onClick={clearAllTasks}
+      >
         Clear
       </button>
     </div>
