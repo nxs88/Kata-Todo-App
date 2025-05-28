@@ -20,7 +20,17 @@
     "start": "react-scripts start",
     "build": "react-scripts build",
     "test": "react-scripts test",
-    "eject": "react-scripts eject"
+    "eject": "react-scripts eject",
+    "lint": "eslint . --ext .js,.jsx",
+    "lint:fix": "eslint . --ext .js,.jsx --fix",
+    "format": "prettier --write \"**/*.{js,jsx,json,css,md}\"",
+    "prepare": "husky install"
+  },
+  "lint-staged": {
+    "*.{js,jsx}": [
+      "eslint --fix",
+      "prettier --write"
+    ]
   },
   "eslintConfig": {
     "extends": [
@@ -43,5 +53,19 @@
   "resolutions": {
     "ajv": "8.17.1",
     "ajv-keywords": "5.1.0"
+  },
+  "devDependencies": {
+    "@babel/core": "^7.27.3",
+    "@babel/eslint-parser": "^7.27.1",
+    "eslint": "^9.27.0",
+    "eslint-config-airbnb": "^19.0.4",
+    "eslint-config-prettier": "^10.1.5",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.1.0",
+    "prettier": "^3.5.3"
   }
 }
