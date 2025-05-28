@@ -62,6 +62,23 @@ export default defineConfig([
       'react/react-in-jsx-scope': 'off',
       'no-unused-vars': 'warn',
       'no-console': 'warn',
+      'import/no-unresolved': 'off',
+      'import/no-extraneous-dependencies': [
+        'error',
+        {
+          devDependencies: true,
+        },
+      ],
+      'no-underscore-dangle': [
+        'error',
+        {
+          allow: ['__filename', '__dirname'],
+        },
+      ],
+      'react/prop-types': 'off',
+      'object-shorthand': 'off',
+      'arrow-body-style': 'off',
+      'react/function-component-definition': 'off',
     },
   },
 ]);

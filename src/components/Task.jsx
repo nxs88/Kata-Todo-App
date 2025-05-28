@@ -28,7 +28,6 @@ function Task({
               setEditTaskId('');
             }
           }}
-          autoFocus
         />
       </span>
     );
