@@ -23,7 +23,7 @@ export default defineConfig([
   {
     extends: fixupConfigRules(
       compat.extends(
-        'airbnb',
+        // 'airbnb',
         'plugin:react/recommended',
         'plugin:react-hooks/recommended',
         'plugin:jsx-a11y/recommended',
