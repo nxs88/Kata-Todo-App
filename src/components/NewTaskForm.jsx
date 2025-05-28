@@ -2,13 +2,14 @@ import React, { useState } from 'react';
 import './NewTaskForm.css';
 
 function NewTaskForm({ addTask }) {
+  const [text, setText] = useState('');
+  
   const onSubmitHandler = (e) => {
     e.preventDefault();
     addTask(text);
     setText('');
   };
 
-  const [text, setText] = useState('');
 
   return (
     <form onSubmit={onSubmitHandler}>
