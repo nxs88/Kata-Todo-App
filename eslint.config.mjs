@@ -42,8 +42,13 @@ export default defineConfig([
         ...globals.browser,
         ...globals.node,
       },
-
       parser: babelParser,
+      parserOptions: {
+        requireConfigFile: false,
+        babelOptions: {
+          presets: ['@babel/preset-react'],
+        },
+      },
     },
 
     rules: {
@@ -58,6 +63,5 @@ export default defineConfig([
       'no-unused-vars': 'warn',
       'no-console': 'warn',
     },
-    ignores: ['./node_modules', './dist', './build'],
   },
 ]);
