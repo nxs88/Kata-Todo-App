@@ -1,12 +1,17 @@
-function TasksFilter({ tasksFilter, clearAllTasks }) {
+import { useState } from 'react';
+
+function TasksFilter({ tasksFilter, clearAllTasks, todos }) {
+  const [activeFilter, setActiveFilter] = useState('');
   return (
     <div className="btn-group">
       <button
         type="button"
-        className="btn btn-info"
+        className="btn btn-outline-secondary"
         onClick={() => {
           tasksFilter('All');
+          setActiveFilter('All');
         }}
+        style={{ backgroundColor: activeFilter === 'All' ? 'lightblue' : '' }}
       >
         All
       </button>
@@ -15,6 +20,10 @@ function TasksFilter({ tasksFilter, clearAllTasks }) {
         className="btn btn-outline-secondary"
         onClick={() => {
           tasksFilter('Active');
+          setActiveFilter('Active');
+        }}
+        style={{
+          backgroundColor: activeFilter === 'Active' ? 'lightblue' : '',
         }}
       >
         Active
@@ -24,7 +33,9 @@ function TasksFilter({ tasksFilter, clearAllTasks }) {
         className="btn btn-outline-secondary"
         onClick={() => {
           tasksFilter('Done');
+          setActiveFilter('Done');
         }}
+        style={{ backgroundColor: activeFilter === 'Done' ? 'lightblue' : '' }}
       >
         Done
       </button>
@@ -32,6 +43,7 @@ function TasksFilter({ tasksFilter, clearAllTasks }) {
         type="button"
         className="btn btn-outline-secondary"
         onClick={clearAllTasks}
+        disabled={!todos.length}
       >
         Clear
       </button>

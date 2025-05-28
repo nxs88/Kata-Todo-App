@@ -91,6 +91,7 @@ const App = () => {
         <TasksFilter
           tasksFilter={tasksFilterHandler}
           clearAllTasks={clearAllTasksHandler}
+          todos= {filteredTasks}
         />
       </div>
       <TaskList
