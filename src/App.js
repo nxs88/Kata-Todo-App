@@ -19,7 +19,6 @@ const App = () => {
     const newTask = {
       text: text,
       isDone: false,
-      isImportant: false,
       id: uuidv4(),
       createdAt: new Date(),
     };
@@ -35,6 +34,10 @@ const App = () => {
         return { ...todo };
       })
     );
+  };
+  // Удаляем завершенные задачи
+  const clearDoneTasksHandler = () => {
+    setTodos(todos.filter((todo) => !todo.isDone));
   };
   // Редактируем задачу
   const editTaskHandler = (id, text) => {
@@ -53,17 +56,7 @@ const App = () => {
     );
     setEditTaskId('');
   };
-  // Выделяем задачу
-  const isImportantHandler = (id) => {
-    setTodos(
-      todos.map((todo) => {
-        if (id === todo.id) {
-          return { ...todo, isImportant: !todo.isImportant };
-        }
-        return { ...todo };
-      })
-    );
-  };
+
   // Удаляем задачу
   const deleteTaskHandler = (id) => {
     setTodos(todos.filter((todo) => id !== todo.id));
@@ -82,22 +75,33 @@ const App = () => {
     if (filterName === 'Active') return !todo.isDone;
     return true;
   });
-
+  // Счетчик активных задач
+  const activeTasksCount = todos.filter((todo) => todo.isDone).length;
   return (
     <div className="todo-app">
       <AppHeader />
+      {activeTasksCount > 0 ? (
+        <h6>
+          {`You have completed ${activeTasksCount} ${
+            activeTasksCount > 1 ? 'todos' : 'todo'
+          }`}{' '}
+          of {todos.length}
+        </h6>
+      ) : (
+        <h6>There is no completed tasks</h6>
+      )}
       <div className="top-panel d-flex">
         <NewTaskForm addTask={addTaskHandler} />
         <TasksFilter
           tasksFilter={tasksFilterHandler}
           clearAllTasks={clearAllTasksHandler}
-          todos= {filteredTasks}
+          todos={filteredTasks}
         />
       </div>
+
       <TaskList
         todos={filteredTasks}
         deleteTask={deleteTaskHandler}
-        isImportant={isImportantHandler}
         taskDone={taskDoneHandler}
         editTask={editTaskHandler}
         saveEditedTask={saveEditedTaskHandler}
@@ -106,6 +110,13 @@ const App = () => {
         editedTask={editedTask}
         setEditedTask={setEditedTask}
       />
+      <button
+        type="button"
+        className={`btn btn-success ${activeTasksCount ? 'active' : ''}`}
+        onClick={clearDoneTasksHandler}
+      >
+        Clear completed tasks
+      </button>
     </div>
   );
 };

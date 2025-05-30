@@ -4,7 +4,6 @@ import './Task.css';
 function Task({
   todo,
   deleteTask,
-  isImportant,
   taskDone,
   editTask,
   saveEditedTask,
@@ -23,7 +22,12 @@ function Task({
           onChange={(e) => setEditedTask(e.target.value)}
           onKeyDown={(e) => {
             if (e.key === 'Enter') {
-              saveEditedTask(todo.id);
+              if (editedTask === '') {
+                setEditTaskId('');
+                setEditedTask(todo.text);
+              } else {
+                saveEditedTask(todo.id);
+              }
             } else if (e.key === 'Escape') {
               setEditTaskId('');
             }
@@ -39,12 +43,14 @@ function Task({
         todo.isDone ? 'done' : ''
       }`}
     >
-      <span
-        className="todo-list-item-label"
-        onClick={() => {
-          taskDone(todo.id);
-        }}
-      >
+      <span className="todo-list-item-label">
+        <input
+          className="toggle"
+          type="checkbox"
+          onClick={() => {
+            taskDone(todo.id);
+          }}
+        />{' '}
         {todo.text}
       </span>
 
@@ -56,15 +62,6 @@ function Task({
         }}
       >
         <i className="fa fa-trash-o" />
-      </button>
-      <button
-        type="button"
-        className="btn btn-outline-success btn-sm float-end"
-        onClick={() => {
-          isImportant(todo.id);
-        }}
-      >
-        <i className="fa fa-exclamation" />
       </button>
       <button
         type="button"
