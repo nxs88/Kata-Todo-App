@@ -38,16 +38,13 @@ function Task({
   }
 
   return (
-    <span
-      className={`todo-list-item ${todo.isImportant ? 'important' : ''} ${
-        todo.isDone ? 'done' : ''
-      }`}
-    >
+    <span className={`todo-list-item  ${todo.isDone ? 'done' : ''}`}>
       <span className="todo-list-item-label">
         <input
           className="toggle"
           type="checkbox"
-          onClick={() => {
+          checked={todo.isDone}
+          onChange={() => {
             taskDone(todo.id);
           }}
         />{' '}
