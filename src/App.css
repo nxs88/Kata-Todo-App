@@ -23,3 +23,13 @@ body {
 .btn-success:active {
   transform: scale(0.98);
 }
+@media (max-width: 320px) {
+  .todo-app {
+    max-width: 320px;
+    padding: 20px;
+  }
+  .top-panel{
+    display: flex;
+    flex-direction: column;
+  }
+}

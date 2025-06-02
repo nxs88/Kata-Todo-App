@@ -1,3 +1,8 @@
 .btn--clear {
   margin-left: 15px;
 }
+@media (max-width: 320px) {
+  .btn--clear {
+    margin-left: 0;
+  }
+}
