@@ -1,5 +1,6 @@
 import { formatDistanceToNow } from 'date-fns';
 import './Task.css';
+import Timer from './Timer';
 
 function Task({
   todo,
@@ -49,6 +50,9 @@ function Task({
           }}
         />{' '}
         {todo.text}
+      </span>
+      <span className="timer">
+        <Timer />
       </span>
 
       <button
