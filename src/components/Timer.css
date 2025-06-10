@@ -1,0 +1,31 @@
+.timer {
+  font-size: 13px;
+  color: grey;
+  margin-left: 100px;
+}
+
+.button-play,
+.button-pause {
+  width: 18px;
+  height: 18px;
+  color: #cc9a9a;
+  cursor: pointer;
+  border: none;
+  background-color: #fff;
+  margin: 2px;
+}
+.button-pause {
+  background-image: url('../assets/imgs/pausebtn.svg');
+  background-repeat: no-repeat;
+}
+.button-play {
+  background-image: url('../assets/imgs/playbtn.svg');
+  background-repeat: no-repeat;
+}
+
+.button-play:active {
+  transform: scale(0.9);
+}
+.button-pause:active {
+  transform: scale(0.9);
+}
